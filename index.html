@@ -1,78 +1,61 @@
 <!DOCTYPE html>
 <html>
 <head>
-  <title>Combinatorics Calculator</title>
-  <style>
-    body {
-      font-family: Arial, sans-serif;
-      margin: 20px;
-    }
-    h1 {
-      text-align: center;
-    }
-    form {
-      margin-top: 30px;
-      text-align: center;
-    }
-    input[type="number"] {
-      width: 50px;
-    }
-    button {
-      margin-top: 10px;
-    }
-  </style>
+    <title>Калькулятор комбинаторики</title>
 </head>
 <body>
-  <h1>Combinatorics Calculator</h1>
-  
-  <form id="combinatorics-form">
-    <label for="n">n:</label>
-    <input type="number" id="n" min="0" required>
-    <br>
-    <label for="k">k:</label>
-    <input type="number" id="k" min="0" required>
-    <br>
-    <button type="submit">Calculate</button>
-  </form>
+    <h1>Калькулятор комбинаторики</h1>
 
-  <div id="result" style="display: none;">
-    <p>Result:</p>
-    <p id="combination-result"></p>
+    <h3>Перестановка Pn = n!</h3>
+    <label for="permutation-input">Введите значение n:</label>
+    <input type="number" id="permutation-input">
+    <button onclick="calculatePermutation()">Рассчитать</button>
     <p id="permutation-result"></p>
-  </div>
 
-  <script>
-    document.getElementById('combinatorics-form').addEventListener('submit', function(event) {
-      event.preventDefault();
-      var n = parseInt(document.getElementById('n').value);
-      var k = parseInt(document.getElementById('k').value);
+    <h3>Сочетание Cm/n = n!/((n-m)!*m!)</h3>
+    <label for="combination-n-input">Введите значение n:</label>
+    <input type="number" id="combination-n-input">
+    <label for="combination-m-input">Введите значение m:</label>
+    <input type="number" id="combination-m-input">
+    <button onclick="calculateCombination()">Рассчитать</button>
+    <p id="combination-result"></p>
 
-      var combinationResult = document.getElementById('combination-result');
-      combinationResult.innerHTML = 'Combination: ' + calculateCombination(n, k);
+    <h3>Размещение Am/n = n!(n-m)!</h3>
+    <label for="arrangement-n-input">Введите значение n:</label>
+    <input type="number" id="arrangement-n-input">
+    <label for="arrangement-m-input">Введите значение m:</label>
+    <input type="number" id="arrangement-m-input">
+    <button onclick="calculateArrangement()">Рассчитать</button>
+    <p id="arrangement-result"></p>
 
-      var permutationResult = document.getElementById('permutation-result');
-      permutationResult.innerHTML = 'Permutation: ' + calculatePermutation(n, k);
+    <script>
+        function calculatePermutation() {
+            const n = document.getElementById("permutation-input").value;
+            const result = factorial(n);
+            document.getElementById("permutation-result").textContent = `P${n} = ${result}`;
+        }
 
-      document.getElementById('result').style.display = 'block';
-    });
+        function calculateCombination() {
+            const n = document.getElementById("combination-n-input").value;
+            const m = document.getElementById("combination-m-input").value;
+            const result = factorial(n) / (factorial(n - m) * factorial(m));
+            document.getElementById("combination-result").textContent = `C${m}/${n} = ${result}`;
+        }
 
-    function calculateCombination(n, k) {
-      // Calculate the combination using the formula C(n, k) = n! / (k! * (n - k)!)
-      return factorial(n) / (factorial(k) * factorial(n - k));
-    }
+        function calculateArrangement() {
+            const n = document.getElementById("arrangement-n-input").value;
+            const m = document.getElementById("arrangement-m-input").value;
+            const result = factorial(n) / factorial(n - m);
+            document.getElementById("arrangement-result").textContent = `A${m}/${n} = ${result}`;
+        }
 
-    function calculatePermutation(n, k) {
-      // Calculate the permutation using the formula P(n, k) = n! / (n - k)!
-      return factorial(n) / factorial(n - k);
-    }
-
-    function factorial(num) {
-      if (num === 0 || num === 1) {
-        return 1;
-      } else {
-        return num * factorial(num - 1);
-      }
-    }
-  </script>
+        function factorial(n) {
+            if (n === 0 || n === 1) {
+                return 1;
+            } else {
+                return n * factorial(n - 1);
+            }
+        }
+    </script>
 </body>
 </html>
