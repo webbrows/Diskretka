@@ -2,31 +2,54 @@
 <html>
 <head>
     <title>Калькулятор комбинаторики</title>
+    <style>
+        body {
+            text-align: center;
+        }
+
+        .input-field {
+            border-radius: 10px;
+            padding: 5px;
+            margin-bottom: 10px;
+        }
+
+        .round-button {
+            border-radius: 50%;
+            padding: 10px;
+        }
+
+        .result {
+            text-decoration: underline;
+            font-weight: bold;
+            margin-top: 5px;
+        }
+    </style>
 </head>
 <body>
     <h1>Калькулятор комбинаторики</h1>
 
     <h3>Перестановка Pn = n!</h3>
-    <label for="permutation-input">Введите значение n:</label>
-    <input type="number" id="permutation-input">
-    <button onclick="calculatePermutation()">Рассчитать</button>
-    <p id="permutation-result"></p>
+    <div>
+        <input type="number" id="permutation-input" class="input-field">
+        <button onclick="calculatePermutation()" class="round-button">Рассчитать</button>
+    </div>
+    <p id="permutation-result" class="result"></p>
 
     <h3>Сочетание Cm/n = n!/((n-m)!*m!)</h3>
-    <label for="combination-n-input">Введите значение n:</label>
-    <input type="number" id="combination-n-input">
-    <label for="combination-m-input">Введите значение m:</label>
-    <input type="number" id="combination-m-input">
-    <button onclick="calculateCombination()">Рассчитать</button>
-    <p id="combination-result"></p>
+    <div>
+        <input type="number" id="combination-n-input" class="input-field">
+        <input type="number" id="combination-m-input" class="input-field">
+        <button onclick="calculateCombination()" class="round-button">Рассчитать</button>
+    </div>
+    <p id="combination-result" class="result"></p>
 
     <h3>Размещение Am/n = n!(n-m)!</h3>
-    <label for="arrangement-n-input">Введите значение n:</label>
-    <input type="number" id="arrangement-n-input">
-    <label for="arrangement-m-input">Введите значение m:</label>
-    <input type="number" id="arrangement-m-input">
-    <button onclick="calculateArrangement()">Рассчитать</button>
-    <p id="arrangement-result"></p>
+    <div>
+        <input type="number" id="arrangement-n-input" class="input-field">
+        <input type="number" id="arrangement-m-input" class="input-field">
+        <button onclick="calculateArrangement()" class="round-button">Рассчитать</button>
+    </div>
+    <p id="arrangement-result" class="result"></p>
 
     <script>
         function calculatePermutation() {
