@@ -13,9 +13,14 @@
             margin-bottom: 10px;
         }
 
-        .round-button {
-            border-radius: 50%;
-            padding: 10px;
+        .rectangle-button {
+            border: none;
+            border-radius: 10px;
+            padding: 10px 20px;
+            background-color: #4CAF50;
+            color: white;
+            font-weight: bold;
+            cursor: pointer;
         }
 
         .result {
@@ -31,24 +36,24 @@
     <h3>Перестановка Pn = n!</h3>
     <div>
         <input type="number" id="permutation-input" class="input-field">
-        <button onclick="calculatePermutation()" class="round-button">Рассчитать</button>
     </div>
+    <button onclick="calculatePermutation()" class="rectangle-button">Рассчитать</button>
     <p id="permutation-result" class="result"></p>
 
     <h3>Сочетание Cm/n = n!/((n-m)!*m!)</h3>
     <div>
         <input type="number" id="combination-n-input" class="input-field">
         <input type="number" id="combination-m-input" class="input-field">
-        <button onclick="calculateCombination()" class="round-button">Рассчитать</button>
     </div>
+    <button onclick="calculateCombination()" class="rectangle-button">Рассчитать</button>
     <p id="combination-result" class="result"></p>
 
     <h3>Размещение Am/n = n!(n-m)!</h3>
     <div>
         <input type="number" id="arrangement-n-input" class="input-field">
         <input type="number" id="arrangement-m-input" class="input-field">
-        <button onclick="calculateArrangement()" class="round-button">Рассчитать</button>
     </div>
+    <button onclick="calculateArrangement()" class="rectangle-button">Рассчитать</button>
     <p id="arrangement-result" class="result"></p>
 
     <script>
