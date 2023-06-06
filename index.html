@@ -2,6 +2,8 @@
 <html>
 <head>
     <title>Калькулятор комбинаторики</title>
+    <script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
+    <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
     <style>
         body {
             text-align: center;
@@ -44,14 +46,14 @@
 <body>
     <h1>Калькулятор комбинаторики</h1>
 
-    <h3>Перестановка Pn = n!</h3>
+    <h3>Перестановка P<sub>n</sub> = n!</h3>
     <div>
         <input type="number" id="permutation-input" class="input-field">
     </div>
     <button onclick="calculatePermutation()" class="rectangle-button">Рассчитать</button>
     <p id="permutation-result" class="result"></p>
 
-    <h3>Сочетание Cm/n = n!/((n-m)!*m!)</h3>
+    <h3>Сочетание C<sub>m/n</sub> = n! / ((n-m)! * m!)</h3>
     <div>
         <input type="number" id="combination-n-input" class="input-field">
         <input type="number" id="combination-m-input" class="input-field">
@@ -59,7 +61,7 @@
     <button onclick="calculateCombination()" class="rectangle-button">Рассчитать</button>
     <p id="combination-result" class="result"></p>
 
-    <h3>Размещение Am/n = n!(n-m)!</h3>
+    <h3>Размещение A<sub>m/n</sub> = n! / (n-m)!</h3>
     <div>
         <input type="number" id="arrangement-n-input" class="input-field">
         <input type="number" id="arrangement-m-input" class="input-field">
@@ -73,21 +75,21 @@
         function calculatePermutation() {
             const n = document.getElementById("permutation-input").value;
             const result = factorial(n);
-            document.getElementById("permutation-result").textContent = `P${n} = ${result}`;
+            document.getElementById("permutation-result").innerHTML = `P<sub>${n}</sub> = ${result}`;
         }
 
         function calculateCombination() {
             const n = document.getElementById("combination-n-input").value;
             const m = document.getElementById("combination-m-input").value;
             const result = factorial(n) / (factorial(n - m) * factorial(m));
-            document.getElementById("combination-result").textContent = `C${m}/${n} = ${result}`;
+            document.getElementById("combination-result").innerHTML = `C<sub>${m}/${n}</sub> = ${result}`;
         }
 
         function calculateArrangement() {
             const n = document.getElementById("arrangement-n-input").value;
             const m = document.getElementById("arrangement-m-input").value;
             const result = factorial(n) / factorial(n - m);
-            document.getElementById("arrangement-result").textContent = `A${m}/${n} = ${result}`;
+            document.getElementById("arrangement-result").innerHTML = `A<sub>${m}/${n}</sub> = ${result}`;
         }
 
         function factorial(n) {
@@ -101,6 +103,8 @@
         function openVideo() {
             window.location.href = "https://youtu.be/dQw4w9WgXcQ";
         }
+
+        MathJax.typesetPromise();
     </script>
 </body>
 </html>
