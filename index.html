@@ -78,18 +78,24 @@
         function calculatePermutation() {
             const n = document.getElementById("permutation-input").value;
             // Расчет перестановки и вывод результата
+            const result = factorial(n);
+            document.getElementById("permutation-result").innerHTML = `P<sub>${n}</sub> = ${result}`;
         }
 
         function calculateCombination() {
             const n = document.getElementById("combination-n-input").value;
             const m = document.getElementById("combination-m-input").value;
             // Расчет сочетания и вывод результата
+            const result = factorial(n) / (factorial(n - m) * factorial(m));
+            document.getElementById("combination-result").innerHTML = `C<sub>${m}/${n}</sub> = ${result}`;
         }
 
         function calculateArrangement() {
             const n = document.getElementById("arrangement-n-input").value;
             const m = document.getElementById("arrangement-m-input").value;
             // Расчет размещения и вывод результата
+            const result = factorial(n) / factorial(n - m);
+            document.getElementById("arrangement-result").innerHTML = `A<sub>${m}/${n}</sub> = ${result}`;
         }
 
         function openVideo() {
