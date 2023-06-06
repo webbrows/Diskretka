@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
 <head>
-    <title>Калькулятор комбинаторики </title>
+    <title>Калькулятор комбинаторики</title>
     <style>
         body {
             text-align: center;
@@ -39,8 +39,7 @@
             cursor: pointer;
             margin-top: 20px;
         }
-
-        .formula-image {
+                .formula-image {
             max-width: 200px;
             max-height: 200px;
         }
@@ -49,6 +48,7 @@
 <body>
     <h1>Калькулятор комбинаторики</h1>
 
+    <h3>Перестановка Pn = n!</h3>
     <h3> <img class="formula-image" src="https://avatars.mds.yandex.net/get-lpc/1520633/22710a7e-7c43-48f9-af50-2d0f8951ace4/width_360x2_q70"></h3>
     <div>
         <input type="number" id="permutation-input" class="input-field">
@@ -56,6 +56,7 @@
     <button onclick="calculatePermutation()" class="rectangle-button">Рассчитать</button>
     <p id="permutation-result" class="result"></p>
 
+    <h3>Сочетание Cm/n = n!/((n-m)!*m!)</h3>
     <h3><img class="formula-image" src="https://avatars.mds.yandex.net/get-lpc/1520633/27fadc73-4b25-4d4f-b4f3-2a80343a41f8/width_360x2_q70"></h3>
     <div>
         <input type="number" id="combination-n-input" class="input-field">
@@ -64,6 +65,7 @@
     <button onclick="calculateCombination()" class="rectangle-button">Рассчитать</button>
     <p id="combination-result" class="result"></p>
 
+    <h3>Размещение Am/n = n!(n-m)!</h3>
     <h3> <img class="formula-image" src="https://avatars.mds.yandex.net/get-lpc/1527204/e66c8a15-cdab-4454-999b-b1ac64da6037/width_360x2_q70"></h3>
     <div>
         <input type="number" id="arrangement-n-input" class="input-field">
@@ -77,25 +79,30 @@
     <script>
         function calculatePermutation() {
             const n = document.getElementById("permutation-input").value;
-            // Расчет перестановки и вывод результата
             const result = factorial(n);
-            document.getElementById("permutation-result").innerText = `P<sub>${n}</sub> = ${result}`;
+            document.getElementById("permutation-result").textContent = `P${n} = ${result}`;
         }
 
         function calculateCombination() {
             const n = document.getElementById("combination-n-input").value;
             const m = document.getElementById("combination-m-input").value;
-            // Расчет сочетания и вывод результата
             const result = factorial(n) / (factorial(n - m) * factorial(m));
-            document.getElementById("combination-result").innerText = `C<sub>${m}/${n}</sub> = ${result}`;
+            document.getElementById("combination-result").textContent = `C${m}/${n} = ${result}`;
         }
 
         function calculateArrangement() {
             const n = document.getElementById("arrangement-n-input").value;
             const m = document.getElementById("arrangement-m-input").value;
-            // Расчет размещения и вывод результата
             const result = factorial(n) / factorial(n - m);
-            document.getElementById("arrangement-result").innerText = `A<sub>${m}/${n}</sub> = ${result}`;
+            document.getElementById("arrangement-result").textContent = `A${m}/${n} = ${result}`;
+        }
+
+        function factorial(n) {
+            if (n === 0 || n === 1) {
+                return 1;
+            } else {
+                return n * factorial(n - 1);
+            }
         }
 
         function openVideo() {
@@ -104,3 +111,4 @@
     </script>
 </body>
 </html>
+
