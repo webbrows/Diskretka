@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Combinatorics Calculator</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      margin: 20px;
+    }
+    h1 {
+      text-align: center;
+    }
+    form {
+      margin-top: 30px;
+      text-align: center;
+    }
+    input[type="number"] {
+      width: 50px;
+    }
+    button {
+      margin-top: 10px;
+    }
+  </style>
+</head>
+<body>
+  <h1>Combinatorics Calculator</h1>
+  
+  <form id="combinatorics-form">
+    <label for="n">n:</label>
+    <input type="number" id="n" min="0" required>
+    <br>
+    <label for="k">k:</label>
+    <input type="number" id="k" min="0" required>
+    <br>
+    <button type="submit">Calculate</button>
+  </form>
+
+  <div id="result" style="display: none;">
+    <p>Result:</p>
+    <p id="combination-result"></p>
+    <p id="permutation-result"></p>
+  </div>
+
+  <script>
+    document.getElementById('combinatorics-form').addEventListener('submit', function(event) {
+      event.preventDefault();
+      var n = parseInt(document.getElementById('n').value);
+      var k = parseInt(document.getElementById('k').value);
+
+      var combinationResult = document.getElementById('combination-result');
+      combinationResult.innerHTML = 'Combination: ' + calculateCombination(n, k);
+
+      var permutationResult = document.getElementById('permutation-result');
+      permutationResult.innerHTML = 'Permutation: ' + calculatePermutation(n, k);
+
+      document.getElementById('result').style.display = 'block';
+    });
+
+    function calculateCombination(n, k) {
+      // Calculate the combination using the formula C(n, k) = n! / (k! * (n - k)!)
+      return factorial(n) / (factorial(k) * factorial(n - k));
+    }
+
+    function calculatePermutation(n, k) {
+      // Calculate the permutation using the formula P(n, k) = n! / (n - k)!
+      return factorial(n) / factorial(n - k);
+    }
+
+    function factorial(num) {
+      if (num === 0 || num === 1) {
+        return 1;
+      } else {
+        return num * factorial(num - 1);
+      }
+    }
+  </script>
+</body>
+</html>
